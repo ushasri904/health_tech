@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HEALTHTECH</title>
+  <style>
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; background: #11637c; }
+
+    /* Navbar */
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; background: #01264b; color: rgb(243, 239, 239);
+    }
+    nav .logo { font-size: 1.5rem; font-weight: bold; }
+    nav ul { list-style: none; display: flex; }
+    nav ul li { margin-left: 20px; }
+    nav ul li a { color: white; text-decoration: none; font-weight: 500; }
+
+    /* Hero */
+    .hero {
+      display: flex; justify-content: center; align-items: center;
+      flex-direction: column; height: 90vh; text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('doctor.jpg') no-repeat center/cover;
+      color: white; padding: 20px;
+    }
+    .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.2rem; margin-bottom: 1.5rem; }
+    .hero button {
+      background: #3d16a7; color: white; padding: 0.8rem 1.5rem;
+      border: none; border-radius: 5px; font-size: 1rem; cursor: pointer;
+      transition: 0.3s;
+    }
+    .hero button:hover { background: #031f7c; }
+
+    /* Features */
+    .features {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px; padding: 50px 20px; background: white;
+    }
+    .feature-box {
+      background: #f1f1f1; padding: 20px; text-align: center;
+      border-radius: 10px; transition: transform 0.3s;
+    }
+    .feature-box:hover { transform: translateY(-5px); }
+    .feature-box h3 { margin-bottom: 10px; color: #333; }
+
+    /* Footer */
+    footer {
+      background: #333; color: white; text-align: center; padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">HEALTH TECH</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to HEALTH TECH</h1>
+    <p>Your health, Your care, Best price<P>
+    <p>YOUR HEALTH OUR PRIORITY<p>
+    <button onclick="showMessage()">Get Started</button>
+  </section>
+
+
+  <!-- JavaScript -->
+  <script>
+    function showMessage() {
+      alert("Thank you for visiting! 🚀");
+    }
+  </script>
+
+</body>
+</html>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Slot Booking & Appointment</title>
+  <style>
+    :root{
+      --bg:#0f1724; /* deep navy */
+      --card:#0b1220;
+      --accent:#06b6d4; /* teal */
+      --accent-2:#7c3aed; /* purple */
+      --muted:#94a3b8;
+      --glass: rgba(255,255,255,0.03);
+      --success:#10b981;
+      --danger:#ef4444;
+      --radius:12px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: #e6eef8;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.08), transparent),
+                  radial-gradient(1000px 400px at 90% 90%, rgba(6,182,212,0.05), transparent),
+                  var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      min-height:100vh;
+      padding:32px;
+    }
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:start;
+    }
+
+    /* Left - main booking panel */
+    .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    header h1{margin:0 0 6px 0;font-size:20px}
+    header p{margin:0;color:var(--muted);font-size:14px}
+
+    .calendar{
+      margin-top:18px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .date-card{
+      background:var(--glass);
+      padding:12px;
+      width:110px;
+      border-radius:10px;
+      text-align:center;
+      cursor:pointer;
+      border:1px solid transparent;
+      transition:all .18s ease;
+    }
+    .date-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,0.04)}
+    .date-card.selected{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#001219;border:1px solid rgba(0,0,0,0.25);}
+    .date-card .day{font-size:13px;color:var(--muted)}
+    .date-card .date{font-size:18px;font-weight:700}
+
+    .slots{
+      margin-top:18px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .slot{
+      padding:10px 12px;
+      border-radius:8px;
+      background:rgba(255,255,255,0.02);
+      cursor:pointer;
+      border:1px solid rgba(255,255,255,0.03);
+      transition:transform .12s ease, box-shadow .12s ease;
+      min-width:120px;
+      text-align:center;
+    }
+    .slot:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(2,6,23,0.6)}
+    .slot.booked{opacity:0.45;cursor:not-allowed;border-color:rgba(239,68,68,0.2)}
+
+    /* Right - booking form */
+    .sidebar{
+      position:sticky;top:32px;
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:18px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.03);
+      box-shadow:0 6px 24px rgba(2,6,23,0.55);
+    }
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    input,select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    button{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;color:#001219;padding:12px 14px;border-radius:10px;font-weight:700;cursor:pointer;width:100%;margin-top:10px
+    }
+
+    .gallery{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px
+    }
+    .gallery img{width:100%;height:80px;object-fit:cover;border-radius:8px;border:1px solid rgba(255,255,255,0.04)}
+
+    .meta{font-size:13px;color:var(--muted);margin-top:8px}
+    .notice{font-size:13px;padding:10px;border-radius:8px;margin-top:10px}
+    .success{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.12);color:var(--success)}
+    .error{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.12);color:var(--danger)}
+
+    footer{margin-top:18px;color:var(--muted);font-size:13px}
+
+    @media (max-width:980px){
+      .container{grid-template-columns:1fr; padding-bottom:40px}
+      .sidebar{position:static}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <main class="panel">
+      <header>
+        <h1>Book Appointment</h1>
+        <p>Choose a date and time slot — live demo with images, local storage and basic conflict prevention.</p>
+      </header>
+
+      <section style="margin-top:16px">
+        <div class="meta">Available dates (next 10 days)</div>
+        <div class="calendar" id="dates"></div>
+      </section>
+
+      <section style="margin-top:14px">
+        <div class="meta">Available time slots</div>
+        <div class="slots" id="slots"></div>
+      </section>
+
+      <section style="margin-top:14px">
+        <div class="meta">Service gallery</div>
+        <div class="gallery" id="gallery">
+          <img src="blood.jpg" alt="service 1">
+          <img src="ecg.jpg" alt="service 2">
+          <img src="tablets.jpg" alt="service 3">
+        </div>
+      </section>
+
+      </footer>
+    </main>
+
+    <aside class="sidebar">
+      <div class="card">
+        <h3 style="margin:0 0 8px 0">Your appointment</h3>
+        <div id="selectedSummary" class="meta">No date or slot selected</div>
+
+        <form id="bookingForm" style="margin-top:12px">
+          <label for="name">Full name</label>
+          <input id="name" required placeholder="Your name">
+
+          <label for="phone">Phone / Contact</label>
+          <input id="phone" required placeholder="+91 98765 43210">
+
+          <label for="service">Service</label>
+          <select id="service">
+            <option>General Consultation</option>
+            <option>Specialist Appointment</option>
+            <option>Lab Test</option>
+            <option>Follow-up</option>
+          </select>
+
+          <div id="formNotice" class="notice" style="display:none"></div>
+
+          <button id="bookBtn" type="submit">Confirm Booking</button>
+          <button id="resetBtn" type="button" style="margin-top:8px;background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.04);">Reset all bookings</button>
+        </form>
+      </div>
+
+      <div style="height:16px"></div>
+
+      <div class="card">
+        <h4 style="margin:0 0 8px 0">Upcoming bookings</h4>
+        <div id="upcoming" class="meta">No bookings yet</div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    // --- Simple slot booking demo ---
+    // - Shows next 10 days
+    // - Each day has a set of time slots
+    // - Bookings stored in localStorage to persist between reloads
+    // - Prevent double booking of same slot
+
+    const datesEl = document.getElementById('dates');
+    const slotsEl = document.getElementById('slots');
+    const selectedSummary = document.getElementById('selectedSummary');
+    const bookingForm = document.getElementById('bookingForm');
+    const formNotice = document.getElementById('formNotice');
+    const upcoming = document.getElementById('upcoming');
+    const resetBtn = document.getElementById('resetBtn');
+
+    // configurable time slots
+    const TIME_SLOTS = ['09:00 AM','09:30 AM','10:00 AM','10:30 AM','11:00 AM','11:30 AM','02:00 PM','02:30 PM','03:00 PM','04:00 PM'];
+
+    // store state
+    let state = {
+      selectedDate: null, // 'YYYY-MM-DD'
+      selectedSlot: null, // '09:00 AM'
+      bookings: {} // { 'YYYY-MM-DD': { '09:00 AM': {name,phone,service}} }
+    };
+
+    // load from localStorage
+    function load(){
+      const raw = localStorage.getItem('slotBookings_v1');
+      if(raw){
+        try{ state.bookings = JSON.parse(raw) }catch(e){ state.bookings = {} }
+      }
+    }
+    function save(){ localStorage.setItem('slotBookings_v1', JSON.stringify(state.bookings)); }
+
+    // render next N days
+    function renderDates(days=10){
+      datesEl.innerHTML='';
+      const today = new Date();
+      for(let i=0;i<days;i++){
+        const d = new Date(today.getFullYear(), today.getMonth(), today.getDate()+i);
+        const iso = d.toISOString().slice(0,10);
+        const card = document.createElement('div');
+        card.className='date-card'+(state.selectedDate===iso? ' selected':'');
+        card.dataset.iso = iso;
+        card.innerHTML = `<div class="day">${d.toLocaleDateString(undefined,{weekday:'short',month:'short'})}</div><div class="date">${d.getDate()}</div>`;
+        card.addEventListener('click', ()=>{
+          state.selectedDate = iso;
+          state.selectedSlot = null;
+          renderDates(days); renderSlots(); updateSummary();
+        });
+        datesEl.appendChild(card);
+      }
+    }
+
+    function renderSlots(){
+      slotsEl.innerHTML='';
+      if(!state.selectedDate){ slotsEl.innerHTML='<div class="meta">Select a date to view slots</div>'; return }
+      TIME_SLOTS.forEach(t =>{
+        const s = document.createElement('div');
+        const booked = state.bookings[state.selectedDate] && state.bookings[state.selectedDate][t];
+        s.className = 'slot' + (booked? ' booked':'') + (state.selectedSlot===t? ' selected':'');
+        s.innerHTML = `<div style="font-weight:700">${t}</div><div style="font-size:12px;color:var(--muted)">${booked? 'Booked':'Available'}</div>`;
+        if(!booked){
+          s.addEventListener('click', ()=>{
+            state.selectedSlot = t; updateSummary(); renderSlots();
+          })
+        }
+        slotsEl.appendChild(s);
+      })
+    }
+
+    function updateSummary(){
+      if(!state.selectedDate){ selectedSummary.textContent='No date or slot selected'; return }
+      const d = new Date(state.selectedDate + 'T00:00:00');
+      const label = d.toLocaleDateString(undefined,{weekday:'long', month:'short', day:'numeric'});
+      selectedSummary.textContent = label + (state.selectedSlot? ' — ' + state.selectedSlot : ' — pick a slot');
+    }
+
+    function renderUpcoming(){
+      const entries = [];
+      Object.keys(state.bookings).sort().forEach(date=>{
+        Object.keys(state.bookings[date]).forEach(slot=>{
+          const b = state.bookings[date][slot];
+          entries.push({date,slot,name:b.name,service:b.service});
+        })
+      });
+      upcoming.innerHTML = entries.length? entries.slice(0,6).map(e=>{
+        const d = new Date(e.date+'T00:00:00');
+        return `<div style="margin-bottom:8px;border-bottom:1px dashed rgba(255,255,255,0.03);padding-bottom:8px"><strong style="display:block">${e.name}</strong><small style="display:block;color:var(--muted)">${d.toLocaleDateString(undefined,{month:'short',day:'numeric'})} • ${e.slot} • ${e.service}</small></div>`
+      }).join('') : '<div class="meta">No bookings yet</div>';
+    }
+
+    bookingForm.addEventListener('submit', (ev)=>{
+      ev.preventDefault(); formNotice.style.display='none';
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service').value;
+
+      if(!state.selectedDate || !state.selectedSlot){
+        showNotice('Please select a date and time slot before booking.', 'error'); return;
+      }
+
+      // check again if slot was taken (another tab)
+      if(state.bookings[state.selectedDate] && state.bookings[state.selectedDate][state.selectedSlot]){
+        showNotice('This slot was just booked. Please choose another slot.', 'error'); renderSlots(); return;
+      }
+
+      // create booking
+      state.bookings[state.selectedDate] = state.bookings[state.selectedDate] || {};
+      state.bookings[state.selectedDate][state.selectedSlot] = {name,phone,service,createdAt: new Date().toISOString() };
+      save();
+      showNotice('Booking confirmed! You can view it in Upcoming bookings.', 'success');
+      renderSlots(); renderUpcoming();
+      // clear selection
+      state.selectedDate = null; state.selectedSlot = null; renderDates(); updateSummary();
+      bookingForm.reset();
+    });
+
+    function showNotice(text, kind){
+      formNotice.style.display='block'; formNotice.textContent = text;
+      formNotice.className = 'notice '+(kind==='success'? 'success' : 'error');
+      setTimeout(()=>{ formNotice.style.display='none' }, 5000);
+    }
+
+    resetBtn.addEventListener('click', ()=>{
+      if(confirm('Reset all bookings? This will clear local storage for this site.')){
+        state.bookings = {}; save(); renderUpcoming(); renderSlots(); renderDates(); showNotice('All bookings cleared.','success');
+      }
+    })
+
+    // init
+    load(); renderDates(10); renderSlots(); updateSummary(); renderUpcoming();
+
+    // Extra: expose a simple function to prefill for testing
+    window.__TEST_FILL = function(){
+      const d = Object.keys(state.bookings)[0] || Object.keys(state.bookings)[1];
+      if(!d){
+        const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate()+1);
+        const iso = tomorrow.toISOString().slice(0,10);
+        state.bookings[iso] = {};
+        state.bookings[iso][TIME_SLOTS[0]] = {name:'Test User', phone:'+91 90000 00000', service:'General Consultation', createdAt:new Date().toISOString()};
+        save(); renderUpcoming(); renderSlots();
+      }
+    }
+
+  </script>
+<
+/body>
+
+
+</html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Patient Report (Softcopy) — Demo</title>
+  <style>
+    :root{
+      --bg:#f4f7fb; --card:#ffffff; --muted:#65748b; --accent:#4f46e5; --accent-2:#06b6d4; --success:#10b981; --danger:#ef4444; --radius:12px; --shadow: 0 8px 30px rgba(16,24,40,0.06);
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color:#0b1220;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#f8fafc,#f1f5f9);padding:28px;}
+    .wrap{max-width:980px;margin:0 auto;display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
+    header{grid-column:1/3;margin-bottom:6px}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:6px 0 0;color:var(--muted);font-size:14px}
+
+    .card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);border:1px solid rgba(12,17,23,0.04)}
+
+    /* left: report editor / viewer */
+    .report-area{min-height:640px;display:flex;flex-direction:column;gap:12px}
+    .report-preview{background:#ffffff;border-radius:10px;padding:18px;border:1px solid rgba(12,17,23,0.04);box-shadow:0 6px 18px rgba(12,17,23,0.03);}
+    .report-header{display:flex;gap:12px;align-items:center}
+    .logo{width:64px;height:64px;border-radius:8px;background:linear-gradient(90deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    .patient-meta{flex:1}
+    .patient-meta h2{margin:0;font-size:18px}
+    .patient-meta p{margin:4px 0 0;color:var(--muted);font-size:13px}
+
+    .section{margin-top:10px}
+    .section h3{margin:0 0 10px 0;font-size:15px}
+    .row{display:flex;gap:12px}
+    .col{flex:1}
+    .field{background:#fbfdff;padding:10px;border-radius:8px;border:1px solid rgba(12,17,23,0.03);font-size:13px}
+
+    table{width:100%;border-collapse:collapse;margin-top:8px}
+    th,td{padding:8px;border-bottom:1px solid rgba(12,17,23,0.04);text-align:left;font-size:13px}
+    th{background:#fbfdff}
+
+    /* right: controls */
+    .controls{display:flex;flex-direction:column;gap:12px}
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    input[type=text],input[type=date],select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(12,17,23,0.06);background:#fff;font-size:13px}
+    textarea{min-height:100px}
+    .btn{display:inline-block;padding:10px 12px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;font-weight:700;cursor:pointer}
+    .btn.ghost{background:transparent;border:1px solid rgba(12,17,23,0.06);color:var(--muted)}
+    .small{font-size:13px;padding:8px 10px}
+    .attachments{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .thumb{height:80px;border-radius:8px;object-fit:cover;border:1px solid rgba(12,17,23,0.04)}
+
+    footer{grid-column:1/3;margin-top:10px;color:var(--muted);font-size:13px}
+
+    @media(max-width:980px){.wrap{grid-template-columns:1fr;padding:12px}.report-area{min-height:400px}.controls{order:2}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Patient Report — Softcopy Generator</h1>
+      <p class="lead">Create, preview and download printable softcopy reports (PDF) for patients. Client-only demo using html2canvas + jsPDF.</p>
+    </header>
+
+    <main class="card report-area">
+      <div class="report-preview" id="report">
+        <div class="report-header">
+          <div class="logo">H+</div>
+          <div class="patient-meta">
+            <h2 id="r_name">John Doe</h2>
+            <p id="r_id">Patient ID: <strong>PT-0001</strong> • DOB: <span id="r_dob">1988-03-15</span></p>
+            <p id="r_contact" style="margin-top:6px;color:var(--muted);">Contact: +91 98765 43210 • Gender: Male</p>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:12px;color:var(--muted)">Report Date</div>
+            <div id="r_date" style="font-weight:700">2025-09-04</div>
+          </div>
+        </div>
+1
+        <div class="section">
+          <h3>Clinical Summary</h3>
+          <div class="field" id="r_summary">Patient presents with mild cough and fever. Blood tests show normal CBC and slightly elevated CRP. Chest X-ray unremarkable.</div>
+        </div>
+
+        <div class="section">
+          <h3>Investigations</h3>
+          <table>
+            <thead><tr><th>Test</th><th>Result</th><th>Reference</th></tr></thead>
+            <tbody id="r_tests">
+              <tr><td>Hemoglobin</td><td>13.5 g/dL</td><td>13.0–17.0</td></tr>
+              <tr><td>WBC</td><td>7,500 /µL</td><td>4,000–11,000</td></tr>
+              <tr><td>CRP</td><td>8 mg/L</td><td>&lt;5</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <h3>Diagnosis & Plan</h3>
+          <div class="field" id="r_plan">Likely viral upper respiratory tract infection. Symptomatic treatment, follow-up in 5 days. Consider repeat CRP if persistent symptoms.</div>
+        </div>
+
+        <div class="section">
+          <h3>Attachments</h3>
+          <div style="display:flex;gap:10px;flex-wrap:wrap" id="r_attachments">
+            <!-- thumbnails will appear here -->
+          </div>
+        </div>
+
+        <div style="margin-top:14px;display:flex;justify-content:space-between;align-items:center">
+          <div style="font-size:13px;color:var(--muted)">Prepared by: Dr. Alice, General Medicine</div>
+          <div style="font-size:12px;color:var(--muted)">Signature: ____________________</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px;justify-content:flex-end">
+        <button class="btn" id="downloadPDF">Download PDF</button>
+        <button class="btn ghost" id="printReport">Print</button>
+      </div>
+    </main>
+
+    <aside class="card controls">
+      <div>
+        <label for="name">Patient name</label>
+        <input id="name" type="text" value="John Doe">
+      </div>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <div style="flex:1">
+          <label for="pid">Patient ID</label>
+          <input id="pid" type="text" value="PT-0001">
+        </div>
+        <div style="width:130px">
+          <label for="dob">DOB</label>
+          <input id="dob" type="date" value="1988-03-15">
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <div style="flex:1">
+          <label for="contact">Contact</label>
+          <input id="contact" type="text" value="+91 98765 43210">
+        </div>
+        <div style="width:120px">
+          <label for="gender">Gender</label>
+          <select id="gender"><option>Male</option><option>Female</option><option>Other</option></select>
+        </div>
+      </div>
+
+      <div style="margin-top:8px">
+        <label for="summary">Clinical summary</label>
+        <textarea id="summary">Patient presents with mild cough and fever. Blood tests show normal CBC and slightly elevated CRP.</textarea>
+      </div>
+
+      <div style="margin-top:8px">
+        <label for="tests">Add test (name | result | ref)</label>
+        <div style="display:flex;gap:8px"><input id="testName" placeholder="Hemoglobin"><input id="testResult" placeholder="13.5 g/dL"><input id="testRef" placeholder="13.0–17.0"><button class="btn small" id="addTest">Add</button></div>
+      </div>
+
+      <div style="margin-top:8px">
+        <label>Attachments (images, x-rays)</label>
+        <input id="fileInput" type="file" accept="image/*" multiple>
+        <div class="attachments" id="thumbs" style="margin-top:8px"></div>
+      </div>
+
+      <div style="margin-top:12px;display:flex;gap:8px">
+        <button class="btn" id="applyBtn">Apply to Preview</button>
+        <button class="btn ghost" id="clearBtn">Clear</button>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <!-- Libraries: html2canvas + jsPDF from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <script>
+    // DOM refs
+    const inputs = { name:document.getElementById('name'), pid:document.getElementById('pid'), dob:document.getElementById('dob'), contact:document.getElementById('contact'), gender:document.getElementById('gender'), summary:document.getElementById('summary') };
+    const report = document.getElementById('report');
+    const r_name = document.getElementById('r_name');
+    const r_id = document.getElementById('r_id');
+    const r_dob = document.getElementById('r_dob');
+    const r_contact = document.getElementById('r_contact');
+    const r_date = document.getElementById('r_date');
+    const r_summary = document.getElementById('r_summary');
+    const r_tests = document.getElementById('r_tests');
+    const r_plan = document.getElementById('r_plan');
+    const r_attachments = document.getElementById('r_attachments');
+
+    // initial date
+    r_date.textContent = new Date().toLocaleDateString();
+
+    // tests state
+    let tests = [
+      {name:'Hemoglobin', result:'13.5 g/dL', ref:'13.0–17.0'},
+      {name:'WBC', result:'7,500 /µL', ref:'4,000–11,000'},
+      {name:'CRP', result:'8 mg/L', ref:'<5'}
+    ];
+
+    // attachments
+    let attachments = [];
+
+    function renderTests(){
+      r_tests.innerHTML = '';
+      tests.forEach(t=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${escapeHtml(t.name)}</td><td>${escapeHtml(t.result)}</td><td>${escapeHtml(t.ref)}</td>`;
+        r_tests.appendChild(tr);
+      })
+    }
+    renderTests();
+
+    function escapeHtml(s){ return (s+'').replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[c]); }
+
+    document.getElementById('addTest').addEventListener('click', (e)=>{
+      e.preventDefault();
+      const n = document.getElementById('testName').value.trim();
+      const res = document.getElementById('testResult').value.trim();
+      const ref = document.getElementById('testRef').value.trim();
+      if(!n) return alert('Please enter test name');
+      tests.push({name:n,result:res||'-',ref:ref||'-'});
+      document.getElementById('testName').value='';document.getElementById('testResult').value='';document.getElementById('testRef').value='';
+      renderTests();
+    });
+
+    // handle file uploads for attachments
+    document.getElementById('fileInput').addEventListener('change', async (ev)=>{
+      const files = Array.from(ev.target.files);
+      for(const f of files){
+        if(!f.type.startsWith('image/')) continue;
+        const dataUrl = await fileToDataUrl(f);
+        attachments.push({name:f.name, dataUrl});
+      }
+      renderThumbs();
+    });
+
+    function fileToDataUrl(file){ return new Promise(res=>{
+      const r = new FileReader(); r.onload = ()=>res(r.result); r.readAsDataURL(file);
+    })}
+
+    function renderThumbs(){
+      const thumbs = document.getElementById('thumbs'); thumbs.innerHTML=''; r_attachments.innerHTML='';
+      attachments.forEach(a=>{
+        const img = document.createElement('img'); img.src=a.dataUrl; img.className='thumb'; img.alt=a.name;
+        thumbs.appendChild(img);
+        const img2 = img.cloneNode(); img2.style.height='120px'; r_attachments.appendChild(img2);
+      })
+    }
+
+    // apply form values to preview
+    document.getElementById('applyBtn').addEventListener('click', ()=>{
+      r_name.textContent = inputs.name.value || '—';
+      r_id.innerHTML = `Patient ID: <strong>${escapeHtml(inputs.pid.value || '—')}</strong> • DOB: <span id="r_dob">${inputs.dob.value || '—'}</span>`;
+      r_dob.textContent = inputs.dob.value || '—';
+      r_contact.textContent = `Contact: ${escapeHtml(inputs.contact.value||'—')} • Gender: ${escapeHtml(inputs.gender.value||'—')}`;
+      r_summary.textContent = inputs.summary.value || '—';
+      renderTests();
+      renderThumbs();
+      r_date.textContent = new Date().toLocaleDateString();
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', ()=>{
+      if(!confirm('Clear form and preview?')) return;
+      inputs.name.value='';inputs.pid.value='';inputs.dob.value='';inputs.contact.value='';inputs.gender.value='Male';inputs.summary.value='';tests = [];attachments=[];renderTests();renderThumbs();
+      r_name.textContent=''; r_id.innerHTML=''; r_summary.textContent=''; r_contact.textContent='';
+    });
+
+    // Print
+    document.getElementById('printReport').addEventListener('click', ()=>{
+      const w = window.open('','printwin');
+      w.document.write('<html><head><title>Patient Report</title>');
+      // minimal styles for printing
+      w.document.write('<style>body{font-family:Arial,Helvetica,sans-serif;padding:20px;color:#111} .logo{width:60px;height:60px;background:#4f46e5;color:#fff;display:inline-flex;align-items:center;justify-content:center;border-radius:6px;font-weight:700;margin-right:12px} table{width:100%;border-collapse:collapse} th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}</style>');
+      w.document.write('</head><body>');
+      w.document.write(report.innerHTML);
+      w.document.write('</body></html>');
+      w.document.close();
+      setTimeout(()=>{ w.print(); w.close(); }, 500);
+    });
+
+    // Download PDF using html2canvas + jsPDF
+    document.getElementById('downloadPDF').addEventListener('click', async ()=>{
+      // provide user feedback
+      const btn = document.getElementById('downloadPDF'); btn.disabled = true; btn.textContent='Generating...';
+      try{
+        // capture the report element
+        const scale = 2; // improve resolution
+        const canvas = await html2canvas(report, {scale, useCORS:true, logging:false, backgroundColor: null});
+        const imgData = canvas.toDataURL('image/png');
+        // create pdf
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF({unit:'pt', format:'a4'});
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+        // calculate image dims to fit A4 with margins
+        const margin = 40; const availW = pageWidth - margin*2;
+        const imgW = availW; const imgH = canvas.height * (imgW / canvas.width);
+        let position = margin;
+        // if image height fits in one page
+        if(imgH <= (pageHeight - margin*2)){
+          pdf.addImage(imgData,'PNG',margin,position,imgW,imgH);
+        } else {
+          // split into multiple pages
+          let remainingHeight = canvas.height;
+          const pageCanvas = document.createElement('canvas');
+          const pageCtx = pageCanvas.getContext('2d');
+          const pxPerPt = canvas.width / imgW; // pixels per pdf pt
+          const pageCanvasHeightPx = Math.floor((pageHeight - margin*2) * pxPerPt);
+          pageCanvas.width = canvas.width;
+          pageCanvas.height = pageCanvasHeightPx;
+
+          let y = 0; let page = 0;
+          while(remainingHeight > 0){
+            pageCtx.clearRect(0,0,pageCanvas.width,pageCanvas.height);
+            pageCtx.drawImage(canvas, 0, y, pageCanvas.width, pageCanvas.height, 0,0,pageCanvas.width,pageCanvas.height);
+            const pageData = pageCanvas.toDataURL('image/png');
+            if(page>0) pdf.addPage();
+            pdf.addImage(pageData,'PNG',margin,position,imgW, (pageCanvas.height / pxPerPt));
+            y += pageCanvasHeightPx; remainingHeight -= pageCanvasHeightPx; page++;
+          }
+        }
+        // save
+        const fname = (inputs.pid.value || 'patient') + '_' + (new Date().toISOString().slice(0,10)) + '.pdf';
+        pdf.save(fname);
+      }catch(err){
+        console.error(err); alert('Could not generate PDF: '+err.message)
+      }finally{ btn.disabled = false; btn.textContent='Download PDF'; }
+    });
+
+    // small helper: apply current values initially
+    document.getElementById('applyBtn').click();
+  </script>
+</body>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website with Payment Section</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+    }
+
+    header {
+      background: #007bff;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .payment-section {
+      margin-top: 30px;
+      background: #ffffff;
+      padding: 20px;
+      border-top: 3px solid #007bff;
+      box-shadow: 0px -2px 8px rgba(0,0,0,0.1);
+    }
+
+    .payment-section h2 {
+      color: #007bff;
+      margin-bottom: 15px;
+    }
+
+    .payment-form {
+      max-width: 400px;
+      margin: auto;
+      text-align: left;
+    }
+
+    .payment-form label {
+      display: block;
+      margin: 8px 0 5px;
+      font-weight: bold;
+    }
+
+    .payment-form input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .payment-form button {
+      width: 100%;
+      padding: 12px;
+      background: #007bff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .payment-form button:hover {
+      background: #0056b3;
+    }
+
+    .success-message {
+      display: none;
+      color: green;
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- Payment Section -->
+  <div class="payment-section">
+    <h2>Payment</h2>
+    <form class="payment-form" id="paymentForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required>
+
+      <label for="card">Card Number</label>
+      <input type="text" id="card" maxlength="16" required>
+
+      <label for="expiry">Expiry Date</label>
+      <input type="month" id="expiry" required>
+
+      <label for="cvv">CVV</label>
+      <input type="password" id="cvv" maxlength="3" required>
+
+      <button type="submit">Pay Now</button>
+    </form>
+
+    <p class="success-message" id="successMessage">✅ Payment Successful!</p>
+  </div>
+  <script>
+    const form = document.getElementById("paymentForm");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      successMessage.style.display = "block";
+      form.reset();
+    });
+  </script>
+
+</body>
